@@ -1,5 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+// import { useEffect } from 'react'
+// import data from '../public/teenage-mercenary/data.json'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,6 +11,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  // useEffect(() => {
+  //   fetch(data.chapters)
+  //   .then((res) => res.json())
+  //   .then((data) => console.log(data))
+  // }, [])
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
