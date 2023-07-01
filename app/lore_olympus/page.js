@@ -5,14 +5,11 @@ import { AppBar, Avatar, Breadcrumbs, Link, List, ListItem, ListItemAvatar, List
 
 const chapters = [
   {
-    id: 0,
-  }, {
     id: 1,
   }, {
     id: 2,
-  },
-  {
-    id: 3
+  }, {
+    id: 3,
   }
 ];
 
@@ -21,16 +18,16 @@ export default function Page() {
     <>
     <AppBar color="inherit" position="sticky">
       <Image
-        src="/teenage-mercenary/landingpage.png"
-        alt="Teenage Mercenary Landing Page"
+        src="/lore-olympus/landingpage.png"
+        alt="Lore Olympus Landing Page"
         width={1200}
         height={240}
         priority
       />
 
       <Toolbar sx={{ position: "absolute", bottom: 0, width: "100%", flexDirection: "column", pb: 1 }}>
-        <Typography variant="h6" sx={{ mr: 2, flexGrow: 1 }}>{data[0].title}</Typography>
-        <Typography>By {data[0].author} & {data[0].artist}</Typography>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>{data[1].title}</Typography>
+        <Typography>By {data[1].author}</Typography>
       </Toolbar>
     </AppBar>
 
@@ -39,7 +36,7 @@ export default function Page() {
         <Link underline="hover" color="inherit" href="/">
           Home
         </Link>
-        <Typography color="text.primary">{data[0].title}</Typography>
+        <Typography color="text.primary">{data[1].title}</Typography>
       </Breadcrumbs>
 
       <List sx={{ width: "100%" }}>
@@ -47,15 +44,14 @@ export default function Page() {
           <ListItem disablePadding key={chapter.id}>
             <ListItemButton 
               sx={{ borderRadius: "4px" }}
-              // className="group flex items-center px-5 py-4 mb-2 transition-colors bg-gray-200"
               className="group"
               component={Link}
-              href={`/teenage_mercenary/${chapter.id}`}
+              href={`/lore-olympus/${chapter.id}`}
             >
               <ListItemAvatar>
                 <Avatar 
                   alt={`Episode ${chapter.id} Thumbnail`} 
-                  src={`/teenage-mercenary/${chapter.id}/thumb.png`} 
+                  src={`/lore-olympus/${chapter.id}/thumb.png`} 
                   variant="rounded" 
                   sx={{ width: 100, height: 100, mr: 2 }}
                 />
