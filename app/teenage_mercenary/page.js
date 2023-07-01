@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import data from '../api/data.json'
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import { AppBar, Breadcrumbs, Link, Toolbar, Typography } from '@mui/material'
 
 const chapters = [
   {
@@ -89,7 +89,7 @@ export default function Page() {
         ))}
       </div>
 
-      <div className="mb-32 flex items-center text-center lg:mb-0 lg:text-left">
+      {/* <div className="mb-32 flex items-center text-center lg:mb-0 lg:text-left">
         <a
           className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
           href="/"
@@ -105,7 +105,13 @@ export default function Page() {
         >
           {data.title}
         </a>
-      </div>
+      </div> */}
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+        <Typography color="text.primary">{data.title}</Typography>
+      </Breadcrumbs>
     </main>
   )
 }
