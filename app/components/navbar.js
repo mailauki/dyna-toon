@@ -1,18 +1,18 @@
 "use client"
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import data from '../api/data.json'
+// import { usePathname } from 'next/navigation'
+// import data from '../api/data.json'
 import { AppBar, Toolbar, Typography } from '@mui/material'
 
-export default function NavBar() {
-  const pathname = usePathname()
-  const slug = pathname.replace("/", "")
-  const series = data.find(series => series.slug == slug)
-  console.log(series)
+export default function NavBar({ series }) {
+  // const pathname = usePathname()
+  // const slug = pathname.replace("/", "")
+  // const series = data.find(series => series.slug == slug)
+  // console.log(series)
   return (
     <AppBar color="inherit" position="sticky" sx={{ alignItems: "center" }}>
       <Image
-        src={`/${slug}/landingpage.png`}
+        src={`/${series.slug}/landingpage.png`}
         alt={`${series.title} Landing Page`}
         width={1200}
         height={240}

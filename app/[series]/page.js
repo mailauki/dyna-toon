@@ -1,7 +1,7 @@
 "use client"
+import { usePathname } from 'next/navigation'
 import data from '../api/data.json'
 import { Avatar, Breadcrumbs, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from '@mui/material'
-import Layout from '../components/series/layout'
 
 const chapters = [
   {
@@ -13,15 +13,18 @@ const chapters = [
   }
 ];
 
-export default function Page({ params }) {
-  console.log(params)
+export default function Page() {
+  const pathname = usePathname()
+  const slug = pathname.replace("/", "")
+  const series = data.find(series => series.slug == slug)
+  console.log(series)
   return (
-    <Layout slug={"slug"}>
+    <>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Home
         </Link>
-        <Typography color="text.primary">{data[1].title}</Typography>
+        <Typography color="text.primary">{series.title}</Typography>
       </Breadcrumbs>
 
       <List sx={{ width: "100%" }}>
@@ -31,12 +34,12 @@ export default function Page({ params }) {
               sx={{ borderRadius: "4px" }}
               className="group"
               component={Link}
-              href={`/lore-olympus/${chapter.id}`}
+              href={`/${slug}/${chapter.id}`}
             >
               <ListItemAvatar>
                 <Avatar 
                   alt={`Episode ${chapter.id} Thumbnail`} 
-                  src={`/lore-olympus/${chapter.id}/thumb.png`} 
+                  src={`/${slug}/${chapter.id}/thumb.png`} 
                   variant="rounded" 
                   sx={{ width: 100, height: 100, mr: 2 }}
                 />
@@ -49,6 +52,6 @@ export default function Page({ params }) {
           </ListItem>
         ))}
       </List>
-    </Layout>
+    </>
   )
 }
