@@ -7,7 +7,6 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 
-
 export default function SeriesLayout({ children }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   
@@ -18,7 +17,7 @@ export default function SeriesLayout({ children }) {
           mode: prefersDarkMode ? 'dark' : 'light',
         },
       }),
-    [prefersDarkMode],
+    [prefersDarkMode]
   )
 
   const pathname = usePathname()
