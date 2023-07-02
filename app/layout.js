@@ -1,7 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-// import { useEffect } from 'react'
-// import data from '../public/teenage-mercenary/data.json'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,17 +9,9 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  // useEffect(() => {
-  //   fetch("api/data")
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  // }, [])
-  // const res = await fetch('api/data.json')
-  // const data = await res.json()
-  // console.log(data)
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+        <body className={inter.className}>{children}</body>
     </html>
   )
 }

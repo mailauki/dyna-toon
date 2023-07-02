@@ -10,7 +10,11 @@ export default function NavBar({ series }) {
   // const series = data.find(series => series.slug == slug)
   // console.log(series)
   return (
-    <AppBar color="inherit" position="sticky" sx={{ alignItems: "center" }}>
+    <AppBar 
+      color="inherit" 
+      position="sticky" 
+      sx={{ alignItems: "center" }}
+    >
       <Image
         src={`/${series.slug}/landingpage.png`}
         alt={`${series.title} Landing Page`}

@@ -18,15 +18,12 @@ export default function Home() {
             <Image
               src={`/${series.slug}/square_landingpage.jpg`}
               alt={`${series.title} Thumbnail`}
-              className="dark:invert"
               width={340}
               height={340}
             />
             <ImageListItemBar 
               title={<Typography variant="h5">{series.title}</Typography>}
               subtitle={`by: ${series.author} ${series.artist ? "& " + series.artist : ""}`}
-              // position="below"
-              // sx={{ background: "transparent" }}
               sx={{
                 background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
                 pt: 2

@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
+        <Link underline="hover" color="inherit" href="/" sx={{ color: "rgb(var(--foreground-rgb))" }}>
           Home
         </Link>
         <Typography color="text.primary">{series.title}</Typography>
