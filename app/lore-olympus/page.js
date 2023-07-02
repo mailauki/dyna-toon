@@ -1,7 +1,7 @@
 "use client"
-import Image from 'next/image'
 import data from '../api/data.json'
-import { AppBar, Avatar, Breadcrumbs, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material'
+import { Avatar, Breadcrumbs, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from '@mui/material'
+import Layout from '../components/series/layout'
 
 const chapters = [
   {
@@ -13,25 +13,10 @@ const chapters = [
   }
 ];
 
-export default function Page() {
+export default function Page({ params }) {
+  console.log(params)
   return (
-    <>
-    <AppBar color="inherit" position="sticky">
-      <Image
-        src="/lore-olympus/landingpage.png"
-        alt="Lore Olympus Landing Page"
-        width={1200}
-        height={240}
-        priority
-      />
-
-      <Toolbar sx={{ position: "absolute", bottom: 0, width: "100%", flexDirection: "column", pb: 1 }}>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>{data[1].title}</Typography>
-        <Typography>By {data[1].author}</Typography>
-      </Toolbar>
-    </AppBar>
-
-    <main className="flex min-h-screen flex-col items-start justify-start p-10">
+    <Layout slug={"slug"}>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Home
@@ -64,7 +49,6 @@ export default function Page() {
           </ListItem>
         ))}
       </List>
-    </main>
-    </>
+    </Layout>
   )
 }

@@ -2,22 +2,7 @@
 import Image from 'next/image'
 // import Link from 'next/link'
 import data from './api/data.json'
-import { ImageList, ImageListItem, ImageListItemBar, Link, Typography } from '@mui/material'
-
-const chapters = [
-  {
-    id: 0,
-  }, 
-  {
-    id: 1,
-  }, 
-  {
-    id: 2,
-  }, 
-  {
-    id: 3,
-  }
-];
+import { ImageList, ImageListItem, ImageListItemBar, Link } from '@mui/material'
 
 export default function Home() {
   return (

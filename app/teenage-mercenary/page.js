@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import data from '../api/data.json'
 import { AppBar, Avatar, Breadcrumbs, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material'
+import Layout from '../components/series/layout';
 
 const chapters = [
   {
@@ -18,8 +19,8 @@ const chapters = [
 
 export default function Page() {
   return (
-    <>
-    <AppBar color="inherit" position="sticky">
+    <Layout>
+    {/* <AppBar color="inherit" position="sticky">
       <Image
         src="/teenage-mercenary/landingpage.png"
         alt="Teenage Mercenary Landing Page"
@@ -32,9 +33,8 @@ export default function Page() {
         <Typography variant="h6" sx={{ mr: 2, flexGrow: 1 }}>{data[0].title}</Typography>
         <Typography>By {data[0].author} & {data[0].artist}</Typography>
       </Toolbar>
-    </AppBar>
-
-    <main className="flex min-h-screen flex-col items-start justify-start p-10">
+    </AppBar> */}
+    
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Home
@@ -68,7 +68,6 @@ export default function Page() {
           </ListItem>
         ))}
       </List>
-    </main>
-    </>
+    </Layout>
   )
 }
