@@ -3,12 +3,9 @@ import Image from 'next/image'
 // import { usePathname } from 'next/navigation'
 // import data from '../api/data.json'
 import { AppBar, Toolbar, Typography } from '@mui/material'
+import Breadcrumb from './breadcrumbs'
 
 export default function NavBar({ series }) {
-  // const pathname = usePathname()
-  // const slug = pathname.replace("/", "")
-  // const series = data.find(series => series.slug == slug)
-  // console.log(series)
   return (
     <AppBar 
       color="inherit" 
@@ -27,6 +24,7 @@ export default function NavBar({ series }) {
         <Typography variant="h5" sx={{ flexGrow: 1 }}>{series.title}</Typography>
         <Typography>{`By  ${series.author} ${series.artist ? "& " + series.artist : ""}`}</Typography>
       </Toolbar>
+      <Breadcrumb />
     </AppBar>
   )
 }

@@ -2,12 +2,11 @@
 import { usePathname } from 'next/navigation'
 import data from '../api/data.json'
 import NavBar from '../components/navbar'
-import { useMemo, useEffect, useState } from 'react'
+import { useMemo } from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import supabase from '../api/supabase'
-import Breadcrumb from '../components/breadcrumbs'
 
 export default function SeriesLayout({ children }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -33,7 +32,6 @@ export default function SeriesLayout({ children }) {
         {/* <CssBaseline /> */}
         <NavBar series={series} />
         <main className="flex min-h-screen flex-col items-start justify-start p-10">
-          <Breadcrumb />
           {children}
         </main>
       </ThemeProvider>

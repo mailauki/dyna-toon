@@ -10,14 +10,14 @@ export default async function Chapters() {
   const { data: chapters } = await supabase.from('chapters').select(`
     id,
     number,
-    series!inner (*)
+    series!inner (slug)
   `).eq('series.slug', slug)
 
   if(!chapters) return <p>Not found</p>
 
   return (
     <List sx={{ width: "100%" }}>
-      {chapters?.map((chapter) => (
+      {chapters.map((chapter) => (
         <ListItem disablePadding key={chapter.id}>
           <ListItemButton 
             sx={{ borderRadius: "4px" }}

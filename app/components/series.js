@@ -4,21 +4,19 @@ import { ImageList, ImageListItem, ImageListItemBar, Link, Typography } from '@m
 import supabase from '../api/supabase'
 
 export default async function Series() {
-  const { data: series } = await supabase.from('series').select(`
-  id, 
-  title, 
-  slug
-`)
+  const { data } = await supabase.from('series').select('id, title, author, artist, slug')
+  
+  // console.log(series)
 
-  if(!series) return <p>Not found</p>
+  if(!data) return <p>Not found</p>
 
   return (
     <ImageList>
-      {series?.map((series, index) => (
+      {data.map((series) => (
         <ImageListItem 
           component={Link} 
           href={`/${series.slug}`} 
-          key={index}
+          key={series.id}
           sx={{ m: 2, transition: "transform 0.2s", "&:hover": { transform: "scale(1.05)"} }}
         >
           <Image
