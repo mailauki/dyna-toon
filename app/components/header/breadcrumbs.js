@@ -1,6 +1,6 @@
 "use client"
 import { usePathname } from 'next/navigation'
-import { Breadcrumbs, Link, Toolbar, Typography } from '@mui/material'
+import { Breadcrumbs, Link, Paper, Toolbar, Typography } from '@mui/material'
 
 export default function Breadcrumb({ series }) {
   const pathname = usePathname()
@@ -9,9 +9,15 @@ export default function Breadcrumb({ series }) {
   if(!series) return <p>Not Found</p>
 
   return (
-    <Toolbar 
+    <Toolbar
       variant="dense"
-      sx={{ mb: 2, position: "absolute", bottom: -64, width: "100%" }}
+      sx={{ 
+        // mb: 2,
+        // position: "absolute", 
+        // bottom: -48, 
+        width: "100%",
+        // backgroundColor: "rgb(var(--background-start-rgb))"
+      }}
     >
       <Breadcrumbs 
         aria-label="breadcrumb" 
