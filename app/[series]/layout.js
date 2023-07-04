@@ -23,7 +23,6 @@ export default function SeriesLayout({ children }) {
 
   const pathname = usePathname()
   const slug = pathname.split("/")[1]
-  // const id = pathname.split("/")[2]
   const series = data.find(series => series.slug == slug)
 
   return (

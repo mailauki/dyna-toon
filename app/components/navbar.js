@@ -1,30 +1,58 @@
 "use client"
 import Image from 'next/image'
-// import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 // import data from '../api/data.json'
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import supabase from '../api/supabase'
+import { AppBar, ImageListItem, ImageListItemBar, Toolbar, Typography } from '@mui/material'
 import Breadcrumb from './breadcrumbs'
 
-export default function NavBar({ series }) {
-  return (
-    <AppBar 
-      color="inherit" 
-      position="sticky" 
-      sx={{ alignItems: "center" }}
-    >
-      <Image
-        src={`/${series.slug}/landingpage.png`}
-        alt={`${series.title} Landing Page`}
-        width={1200}
-        height={240}
-        priority
-      />
+export default async function NavBar() {
+  const pathname = usePathname()
+  const slug = pathname.split("/")[1]
 
-      <Toolbar sx={{ position: "absolute", bottom: 0, width: "100%", flexDirection: "column", pb: 1 }}>
-        <Typography variant="h5" sx={{ flexGrow: 1 }}>{series.title}</Typography>
-        <Typography>{`By  ${series.author} ${series.artist ? "& " + series.artist : ""}`}</Typography>
+  const { data: series } = await supabase.from('series').select('*').eq('slug', slug).single()
+
+  if(!series) return (
+    <AppBar position="sticky">
+      <Toolbar sx={{ justifyContent: "center" }}>
+        <p>Not Found</p>
       </Toolbar>
-      <Breadcrumb />
+    </AppBar>
+  )
+
+  return (
+    <AppBar
+      // color="inherit" 
+      position="sticky"
+    >
+      <Toolbar disableGutters>
+        <ImageListItem 
+          component="div" 
+          sx={{ 
+            width: "100%", 
+            display: "flex", 
+            justifyContent: "center"
+          }}
+        >
+          <Image
+            src={`/${series.slug}/landingpage.png`}
+            alt={`${series.title} Thumbnail`}
+            width={1200}
+            height={240}
+          />
+          <ImageListItemBar
+            title={<Typography variant="h5">{series.title}</Typography>}
+            subtitle={`by: ${series.author} ${series.artist ? "& " + series.artist : ""}`}
+            sx={{
+              // background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+              background: "transparent",
+              // pt: 2,
+              textAlign: "center"
+            }}
+          />
+        </ImageListItem>
+      </Toolbar>
+      <Breadcrumb series={series} />
     </AppBar>
   )
 }
