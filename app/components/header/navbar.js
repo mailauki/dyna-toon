@@ -1,8 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-// import data from '../api/data.json'
-import supabase from '../api/supabase'
+import supabase from '../../api/supabase'
 import { AppBar, ImageListItem, ImageListItemBar, Toolbar, Typography } from '@mui/material'
 import Breadcrumb from './breadcrumbs'
 
@@ -39,6 +38,7 @@ export default async function NavBar() {
             alt={`${series.title} Thumbnail`}
             width={1200}
             height={240}
+            priority
           />
           <ImageListItemBar
             title={<Typography variant="h5">{series.title}</Typography>}

@@ -1,17 +1,15 @@
 "use client"
 import Image from 'next/image'
-import { ImageList, ImageListItem, ImageListItemBar, Link, Typography } from '@mui/material'
 import supabase from '../api/supabase'
+import { ImageListItem, ImageListItemBar, Link, Stack, Typography } from '@mui/material'
 
 export default async function Series() {
   const { data } = await supabase.from('series').select('id, title, author, artist, slug')
-  
-  // console.log(series)
 
   if(!data) return <p>Not found</p>
 
   return (
-    <ImageList>
+    <Stack direction="row" flexWrap="wrap" justifyContent="center" component="ul">
       {data.map((series) => (
         <ImageListItem 
           component={Link} 
@@ -24,9 +22,10 @@ export default async function Series() {
             alt={`${series.title} Thumbnail`}
             width={340}
             height={340}
+            priority
           />
           <ImageListItemBar 
-            title={<Typography variant="h5">{series.title}</Typography>}
+            title={<Typography variant="h5" noWrap>{series.title}</Typography>}
             subtitle={`by: ${series.author} ${series.artist ? "& " + series.artist : ""}`}
             sx={{
               background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
@@ -35,6 +34,6 @@ export default async function Series() {
           />
         </ImageListItem>
       ))}
-    </ImageList>
+    </Stack>
   )
 }

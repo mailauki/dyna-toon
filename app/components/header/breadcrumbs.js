@@ -1,14 +1,10 @@
 "use client"
 import { usePathname } from 'next/navigation'
 import { Breadcrumbs, Link, Toolbar, Typography } from '@mui/material'
-// import supabase from '../api/supabase'
 
-export default async function Breadcrumb({ series }) {
+export default function Breadcrumb({ series }) {
   const pathname = usePathname()
-  // const slug = pathname.split("/")[1]
   const id = pathname.split("/")[2]
-
-  // const { data: series } = await supabase.from('series').select('*').eq('slug', slug).single()
 
   if(!series) return <p>Not Found</p>
 
@@ -17,12 +13,14 @@ export default async function Breadcrumb({ series }) {
       variant="dense"
       sx={{ mb: 2, position: "absolute", bottom: -64, width: "100%" }}
     >
-      <Breadcrumbs aria-label="breadcrumb">
+      <Breadcrumbs 
+        aria-label="breadcrumb" 
+        sx={{ color: "rgb(var(--text-secondary))" }}
+      >
         <Link 
           underline="hover" 
           color="inherit" 
           href="/" 
-          // sx={{ color: "rgb(var(--foreground-rgb))" }}
         >
           Home
         </Link>
@@ -37,7 +35,12 @@ export default async function Breadcrumb({ series }) {
         ) : (
           null
         )}
-        <Typography color="text.primary">{id ? id : series.title}</Typography>
+        <Typography 
+          // color="text.primary"
+          sx={{ color: "rgb(var(--text-primary))" }}
+        >
+          {id ? id : series.title}
+        </Typography>
       </Breadcrumbs>
     </Toolbar>
   )
