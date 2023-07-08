@@ -1,6 +1,6 @@
 "use client"
 import { usePathname } from 'next/navigation'
-import { Breadcrumbs, Link, Paper, Toolbar, Typography } from '@mui/material'
+import { Breadcrumbs, Link, Toolbar, Typography } from '@mui/material'
 
 export default function Breadcrumb({ series }) {
   const pathname = usePathname()

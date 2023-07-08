@@ -7,13 +7,21 @@ export default async function Chapters() {
   const pathname = usePathname()
   const slug = pathname.split("/")[1]
 
-  const { data: chapters } = await supabase.from('chapters').select(`
-    id,
-    number,
+  // const { data: chapters } = await supabase.from('chapters').select(`
+  //   id,
+  //   number,
+  //   series!inner (slug)
+  // `).eq('series.slug', slug)
+
+  const { data: chapters, count } = await supabase.from('chapters').select(`
+    *,
     series!inner (slug)
-  `).eq('series.slug', slug)
+  `, { count: 'exact' }).eq('series.slug', slug)
 
   if(!chapters) return <p>Not found</p>
+
+  // console.log(chapters)
+  // console.log(count)
 
   return (
     <List sx={{ width: "100%" }}>
